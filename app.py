@@ -8,9 +8,7 @@ from PIL import Image
 import numpy as np
 import cv2
 
-# -----------------------------
 # ENSNET Model for Classification
-# -----------------------------
 class ENSNET(nn.Module):
     def __init__(self, num_classes=3):
         super(ENSNET, self).__init__()
@@ -36,9 +34,7 @@ class ENSNET(nn.Module):
         features = torch.cat([r, d, e], dim=1)
         return self.classifier(features)
 
-# -----------------------------
 # Mask Overlay Function
-# -----------------------------
 def overlay_mask_on_image(image, mask):
     image = image.resize((256, 256))
     img_np = np.array(image).astype(np.uint8)
@@ -54,9 +50,7 @@ def overlay_mask_on_image(image, mask):
     overlayed = cv2.drawContours(overlayed, contours, -1, (255, 0, 0), 2)
     return overlayed
 
-# -----------------------------
 # Streamlit App
-# -----------------------------
 st.set_page_config(page_title="Brain CT Classifier & Segmenter", layout="wide")
 st.title("Brain CT Classification and Segmentation")
 st.markdown("---")
@@ -89,7 +83,7 @@ if uploaded_file:
             pred_class = torch.argmax(output, dim=1).item()
 
         class_names = ['Normal', 'Hemorrhage', 'Ischemia']
-        st.subheader("🔍 Prediction Result")
+        st.subheader("Prediction Result")
         st.success(f"**{class_names[pred_class]}**")
 
         if pred_class in [1, 2]:
