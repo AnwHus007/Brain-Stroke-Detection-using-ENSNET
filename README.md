@@ -8,7 +8,7 @@ This project integrates multiple segmentation and classification models such as 
 
 ---
 
-## 🧩 Project Overview
+## Project Overview
 
 * Detects stroke-affected regions in **CT scan images**  
 * Classifies strokes as **Hemorrhagic** or **Ischemic**  
